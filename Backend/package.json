@@ -1,0 +1,28 @@
+{
+  "name": "docker-backend",
+  "version": "1.0.0",
+  "description": "Dockerized backend for extract",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "Docker",
+    "Backend",
+    "Extract"
+  ],
+  "dependencies": {
+    "assert": "^2.0.0",
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.20.2",
+    "cors": "^2.8.5",
+    "dotenv": "^16.1.4",
+    "express": "^4.18.2",
+    "express-validator": "^7.0.1",
+    "jsonwebtoken": "^9.0.0",
+    "mongodb": "^5.6.0",
+    "mongoose": "^7.2.4"
+  },
+  "author": "Sarthak",
+  "license": "ISC"
+}
