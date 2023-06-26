@@ -3,7 +3,6 @@ const connectToMongo = require("./db");
 const bodyParser = require("body-parser");
 var cors = require("cors");
 const path = require("path")
-const Questions = require("./routes/Questions")
 
 require('dotenv').config();
 
@@ -25,8 +24,7 @@ app.use(express.json());
 app.use(cors());
 
 app.use("/api/auth" , require("./routes/Auth"));
-// app.use("/api/questions",require("./routes/Questions"));
-app.use("/api/questions",Questions);
+app.use("/api/questions",require("./routes/Questions"));
 app.use("/api/folders",require("./routes/Folders"))
 app.use("/api/search" , require("./routes/Answer"));
 app.use((req,res)=>{
