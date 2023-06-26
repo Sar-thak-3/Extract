@@ -6,9 +6,10 @@
 2. [ Solution ](#solution)
 3. [ Directory Flow ](#structure)
 4. [ Working ](#working)
-5. [ Tech Stack Used ](#tech_stack)
-6. [ Future Initiatives ](#future_initiatives)
-7. [ External Lins ](#links)
+5. [Deep Learning Modes Used](#deeplearning)
+6. [ Tech Stack Used ](#tech_stack)
+7. [ Future Initiatives ](#future_initiatives)
+8. [ External Lins ](#links)
 
 
 <a name="problemstatement"></a>
@@ -56,6 +57,15 @@ Extract
 * Now the public folder images data is extracted filtered using AI/ML models and then question is extracted out of the image. 
 * The question with its image answer is now available globally to the users.
 * One another feature of `Extract` is asking questions, if question is not answered yet or can't match the relevant text, then users community can link the question to the image.
+
+<a name="deeplearning"></a>
+# Deep Learning Modes Used
+* Firstly the model used for OCR of image is docTR. It is pretrained and developed by Open-source community. It required all the requirements mentioned in `requirements.txt`.
+* Install all requirements then you are ready to go.
+> Why docTR is used?
+* I used docTR model because of very high accuracy as compared to any other OCR and it can very easily judges number and symbols which are essential in high studies.
+
+<br>
 
 <a name="tech_stack"></a>
 # Tech Stack Used
