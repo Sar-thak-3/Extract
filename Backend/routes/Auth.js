@@ -7,7 +7,6 @@ const User = require("../models/Users");
 const fetchuser = require("../middleware/fetchuser");
 
 router.post("/newuser",[
-    body("email").exists(),
     body("password","Enter valid password").isLength({min: 6}),
 ],async(req,res)=>{
     const errors = validationResult(req);
@@ -49,7 +48,6 @@ router.post("/newuser",[
 });
 
 router.post("/loginuser",[
-    body("email","Enter valid email").exists().isEmail(),
     body("password","Enter valid credentials").exists().isLength({min: 6}),
 ],async(req,res)=>{
     const errors = validationResult(req);

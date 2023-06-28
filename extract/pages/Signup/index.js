@@ -55,30 +55,35 @@ export default function Signup(){
     //   },
     //   body: JSON.stringify({firstname: credentials.firstName , lastname: credentials.lastName, email: credentials.email , password: credentials.password}),
     // });
-    const response = await fetch(`https://extract-backend.vercel.app/api/auth/newuser` , {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({firstname: credentials.firstName , lastname: credentials.lastName, email: credentials.email , password: credentials.password}),
-    });
-
-    const res = await response.json();
-    if(res.success && checkbox){
-      localStorage.setItem("usertoken" , res.authtoken);
-      router.push("/Dashboard");
-      return;
+    try{
+      const response = await fetch(`https://extract-backend.vercel.app/api/auth/newuser` , {
+        method: "POST",
+        headers: {
+          "Content-Type": "json",
+        },
+        body: JSON.stringify({firstname: credentials.firstName , lastname: credentials.lastName, email: credentials.email , password: credentials.password}),
+      });
+      const res = await response.json();
+      console.log(res);
+      if(res.success && checkbox){
+        localStorage.setItem("usertoken" , res.authtoken);
+        router.push("/Dashboard");
+        return;
+      }
+      else if(res.success){
+        sessionStorage.setItem("usertoken",res.authtoken);
+        router.push("/Dashboard");
+        return;
+      }
+      else{
+        setInvalidVisible("visible");
+        setTimeout(()=>{
+          setInvalidVisible("hidden");
+        },3000);
+      }
     }
-    else if(res.success){
-      sessionStorage.setItem("usertoken",res.authtoken);
-      router.push("/Dashboard");
-      return;
-    }
-    else{
-      setInvalidVisible("visible");
-      setTimeout(()=>{
-        setInvalidVisible("hidden");
-      },3000);
+    catch(error){
+      console.log("Server not connected");
     }
     return;
   }
