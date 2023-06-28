@@ -21,7 +21,7 @@ catch(err){
 app.use(bodyParser.json({limit: "10mb"}));
 app.use(bodyParser.urlencoded({limit: '100mb', extended: true}));
 app.use(express.json());
-// app.use(cors());
+app.use(cors());
 
 app.use("/api/auth" , require("./routes/Auth"));
 app.use("/api/questions",require("./routes/Questions"));
