@@ -3,7 +3,7 @@ import Link from "next/link";
 export default function Allanswers({answers}) {
   return (
     <>
-    {answers && answers.answers.map((answer)=>{
+    {answers && answers.answers && answers.answers.map((answer)=>{
         return(
           <div className="container flex items-center justify-center" key={answer._id}>
             <div

@@ -93,33 +93,83 @@ export default function Home({questionData,answersData}) {
 export async function getServerSideProps(context){
   const {query} = context;
   const {required,pagenumber} = query;
-  let questionData;
+  let questionData = null;
   if(required && pagenumber){
-    const response = await fetch(`http://127.0.0.1:8080/api/questions/allquestions?pagenumber=${pagenumber}&required=${required}`);
-    questionData = await response.json();
+    try{
+      const response = await fetch(`http://127.0.0.1:8080/api/questions/allquestions?pagenumber=${pagenumber}&required=${required}`);
+      questionData = await response.json(); 
+    }
+    catch(error){
+      console.log("Server not connected");
+    }
   }
   else if(required && !pagenumber){
-    const response = await fetch(`http://127.0.0.1:8080/api/questions/allquestions?pagenumber=${1}&required=${required}`);
+    try{
+      const response = await fetch(`http://127.0.0.1:8080/api/questions/allquestions?pagenumber=${1}&required=${required}`);
     questionData = await response.json();
+    }
+    catch(error){
+      console.log("Server not connected")
+    }
   }
   else if(!required && pagenumber){
-    const response = await fetch(`http://127.0.0.1:8080/api/questions/allquestions?pagenumber=${pagenumber}`);
-    questionData = await response.json();
+    try{
+      const response = await fetch(`http://127.0.0.1:8080/api/questions/allquestions?pagenumber=${pagenumber}`);
+      questionData = await response.json();
+    }
+    catch(error){
+      console.log("Server not connected");
+    }
   }
   else{
-    const response = await fetch(`http://127.0.0.1:8080/api/questions/allquestions?pagenumber=${1}`);
-    questionData = await response.json();
+    try{
+      const response = await fetch(`http://127.0.0.1:8080/api/questions/allquestions?pagenumber=${1}`);
+      questionData = await response.json();
+    }
+    catch(error){
+      console.log("Server not connected");
+    }
+
   }
 
-  let answersData;
-  if(pagenumber){
-    const response = await fetch(`http://127.0.0.1:8080/api/folders/allanswers?pagenumber=${pagenumber}`);
-    answersData = await response.json();
+  let answersData = null;
+  console.log(query);
+
+  if(query.searchquery){
+    try{
+      const response = await fetch(`http://127.0.0.1:8080/api/search/allsearchquery` , {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({searchquery: query.searchquery}),
+      });
+      answersData = await response.json();
+    }
+    catch(error){
+      console.log("Server not connected");
+    }
   }
   else{
-    const response = await fetch(`http://127.0.0.1:8080/api/folders/allanswers?pagenumber=${1}`);
-    answersData = await response.json();
-  }
+    if(pagenumber){
+      try{
+        const response = await fetch(`http://127.0.0.1:8080/api/folders/allanswers`);
+        answersData = await response.json();
+      }
+      catch(error){
+        console.log("Server not connected")
+      }
+    }
+    else{
+      try{
+        const response = await fetch(`http://127.0.0.1:8080/api/folders/allanswers?pagenumber=${1}`);
+        answersData = await response.json();
+      }
+      catch(error){
+        console.log("Server not connected");
+      }
+    }
+  } 
 
   return {
     props: {

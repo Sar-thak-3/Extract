@@ -4,7 +4,7 @@ export default function Answer({answer}) {
     <div>
     {answer.answer && <div>
       <div className="p-2 lg:p-0 max-w-screen flex w-full sm:max-w-[854px]" style={{marginLeft: "auto",marginRight: "auto"}}>
-        <div className="card relative dark:text-white font-arial text-base text-left overflow-auto font-bold flex flex-col w-full lg:mb-2 overflow-y-hidden transition-all duration-500 max-h-full">
+        <div className="card dark:text-white font-arial text-base text-left overflow-auto font-bold flex flex-col w-full lg:mb-2 overflow-y-hidden transition-all duration-500 max-h-full">
           <div className="flex items-center justify-between">
             <div className="py-0.5 px-2 rounded-sm flex self-start items-center text-black text-sm tracking-wider font-medium dark:text-slate-200">
               <svg

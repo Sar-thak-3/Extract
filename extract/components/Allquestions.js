@@ -74,7 +74,7 @@ export default function Allquestions({questions,from}) {
       <br />
       <br />
 
-      {questions.questions && questions.questions.map((question)=>{
+      {questions && questions.questions && questions.questions.map((question)=>{
         return (<div className="container flex items-center justify-center">
           <div
             style={{ maxWidth: "60%" }}

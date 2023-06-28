@@ -15,6 +15,7 @@ export default function Allfolders(){
     useEffect(()=>{
         if(!localStorage.getItem("usertoken") && !sessionStorage.getItem("usertoken")){
             router.push("/Login");
+            return;
         }
 
         async function fetchdata(){

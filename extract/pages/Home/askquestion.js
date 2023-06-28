@@ -15,7 +15,7 @@ export default function AddQuestion(){
     }
 
     const handleSubmit = async()=>{
-      if(!localStorage.getItem("usertoken") && sessionStorage.getItem("usertoken")){
+      if(!localStorage.getItem("usertoken") && !sessionStorage.getItem("usertoken")){
         router.push('/Login');
         return;
       }
