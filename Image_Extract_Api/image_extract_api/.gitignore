@@ -1,2 +1,6 @@
 .env
 /Lib
+/Include
+/__pycache__
+/share
+/Scripts
