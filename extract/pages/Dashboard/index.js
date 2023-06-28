@@ -18,13 +18,21 @@ export default function Dashboard(){
     }
     async function fetchData(){
       const token = localStorage.getItem("usertoken") || sessionStorage.getItem("usertoken");
-      const response = await fetch("http://127.0.0.1:8080/api/auth/getuser", {
+      // const response = await fetch("http://127.0.0.1:8080/api/auth/getuser", {
+      // method: "GET",
+      // headers: {
+      //   "Content-Type": "application/json",
+      //   "authtoken": token,
+      // }
+      // });
+      const response = await fetch("https://extract-backend.vercel.app/api/auth/getuser", {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
         "authtoken": token,
       }
       });
+
       const res = await response.json();
       if(res.success){
         setDetails(res);

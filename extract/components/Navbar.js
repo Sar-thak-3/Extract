@@ -23,7 +23,14 @@ export default function Navbar(){
 
   const handleSearch = async()=>{
     if(inputquery.search!==""){
-      const response = await fetch("http://127.0.0.1:8080/api/search/searchquery" , {
+      // const response = await fetch("http://127.0.0.1:8080/api/search/searchquery" , {
+      //   method: "POST",
+      //   headers: {
+      //     "Content-Type": "application/json",
+      //   },
+      //   body: JSON.stringify({searchquery: inputquery.search}),
+      // })
+      const response = await fetch("https://extract-backend.vercel.app/api/search/searchquery" , {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -41,10 +48,6 @@ export default function Navbar(){
 
   const handleGotoHome = ()=>{
     router.push({pathname: "/Home",query: {searchquery: inputquery.search}});
-  }
-
-  const myFuntion = ()=>{
-    setInputquery({search: ""});
   }
 
     return (

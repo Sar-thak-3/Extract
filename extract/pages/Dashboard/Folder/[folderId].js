@@ -17,8 +17,15 @@ export default function Folder(){
             console.log(foldertoken);
             if(foldertoken){
                 const token = localStorage.getItem("usertoken") || sessionStorage.getItem("usertoken");
-                console.log("hsjbdshvjd");
-                const response = await fetch("http://127.0.0.1:8080/api/folders/userfolderimages" , {
+                // const response = await fetch("http://127.0.0.1:8080/api/folders/userfolderimages" , {
+                //     method: "GET",
+                //     headers: {
+                //         "Content-Type": "json",
+                //         "authtoken": token,
+                //         "foldertoken": foldertoken,
+                //     },
+                // })
+                const response = await fetch("https://extract-backend.vercel.app/api/folders/userfolderimages" , {
                     method: "GET",
                     headers: {
                         "Content-Type": "json",
@@ -26,11 +33,9 @@ export default function Folder(){
                         "foldertoken": foldertoken,
                     },
                 })
-                console.log(response)
                 const res = await response.json();
                 if(res.success){
                     setImages(res.images);
-                    // console.log(images);
                 }
                 else{
                     router.push("/Dashboard");

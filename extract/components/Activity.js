@@ -22,7 +22,14 @@ export default function Activity(){
       let questionData;
       const token = localStorage.getItem("usertoken") || sessionStorage.getItem("usertoken");
       if(required && pagenumber){
-        const response = await fetch(`http://127.0.0.1:8080/api/questions/allquestions?pagenumber=${pagenumber}&required=${required}` , {
+        // const response = await fetch(`http://127.0.0.1:8080/api/questions/allquestions?pagenumber=${pagenumber}&required=${required}` , {
+        //   method: "GET",
+        //   headers: {
+        //     "Content-Type": "json",
+        //      "authtoken": token,
+        //   }
+        // });
+        const response = await fetch(`https://extract-backend.vercel.app/api/questions/allquestions?pagenumber=${pagenumber}&required=${required}` , {
           method: "GET",
           headers: {
             "Content-Type": "json",
@@ -32,33 +39,57 @@ export default function Activity(){
         questionData = await response.json();
       }
       else if(required && !pagenumber){
-        const response = await fetch(`http://127.0.0.1:8080/api/questions/allquestions?pagenumber=${1}&required=${required}` , {
+        // const response = await fetch(`http://127.0.0.1:8080/api/questions/allquestions?pagenumber=${1}&required=${required}` , {
+        //   method: "GET",
+        //   headers: {
+        //     "Content-Type": "json",
+        //      "authtoken": token,
+        //   }
+        // });
+        const response = await fetch(`https://extract-backend.vercel.app/api/questions/allquestions?pagenumber=${1}&required=${required}` , {
           method: "GET",
           headers: {
             "Content-Type": "json",
              "authtoken": token,
           }
         });
+
         questionData = await response.json();
       }
       else if(!required && pagenumber){
-        const response = await fetch(`http://127.0.0.1:8080/api/questions/allquestions?pagenumber=${pagenumber}` , {
+        // const response = await fetch(`http://127.0.0.1:8080/api/questions/allquestions?pagenumber=${pagenumber}` , {
+        //   method: "GET",
+        //   headers: {
+        //     "Content-Type": "json",
+        //      "authtoken": token,
+        //   }
+        // });
+        const response = await fetch(`https://extract-backend.vercel.app/api/questions/allquestions?pagenumber=${pagenumber}` , {
           method: "GET",
           headers: {
             "Content-Type": "json",
              "authtoken": token,
           }
         });
+
         questionData = await response.json();
       }
       else{
-        const response = await fetch(`http://127.0.0.1:8080/api/questions/allquestions?pagenumber=${1}` , {
+        // const response = await fetch(`http://127.0.0.1:8080/api/questions/allquestions?pagenumber=${1}` , {
+        //   method: "GET",
+        //   headers: {
+        //     "Content-Type": "json",
+        //      "authtoken": token,
+        //   }
+        // });
+        const response = await fetch(`https://extract-backend.vercel.app/api/questions/allquestions?pagenumber=${1}` , {
           method: "GET",
           headers: {
             "Content-Type": "json",
              "authtoken": token,
           }
         });
+
         questionData = await response.json();
       }
 
@@ -66,7 +97,14 @@ export default function Activity(){
 
       let answersData;
       if(pagenumber){
-        const response = await fetch(`http://127.0.0.1:8080/api/folders/allanswers?pagenumber=${pagenumber}` , {
+        // const response = await fetch(`http://127.0.0.1:8080/api/folders/allanswers?pagenumber=${pagenumber}` , {
+        //   method: "GET",
+        //   headers: {
+        //     "Content-Type": "json",
+        //      "authtoken": token,
+        //   }
+        // });
+        const response = await fetch(`https://extract-backend.vercel.app/api/folders/allanswers?pagenumber=${pagenumber}` , {
           method: "GET",
           headers: {
             "Content-Type": "json",
@@ -76,7 +114,14 @@ export default function Activity(){
         answersData = await response.json();
       }
       else{
-        const response = await fetch(`http://127.0.0.1:8080/api/folders/allanswers?pagenumber=${1}` , {
+        // const response = await fetch(`http://127.0.0.1:8080/api/folders/allanswers?pagenumber=${1}` , {
+        //   method: "GET",
+        //   headers: {
+        //     "Content-Type": "json",
+        //      "authtoken": token,
+        //   }
+        // });
+        const response = await fetch(`https://extract-backend.vercel.app/api/folders/allanswers?pagenumber=${1}` , {
           method: "GET",
           headers: {
             "Content-Type": "json",

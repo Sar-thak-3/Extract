@@ -23,7 +23,17 @@ export default function Question({ question }) {
       return;
     }
     const token = localStorage.getItem("usertoken") || sessionStorage.getItem("usertoken");
-    const response = await fetch(`http://127.0.0.1:8080/api/questions/addcomment` , {
+    // const response = await fetch(`http://127.0.0.1:8080/api/questions/addcomment` , {
+    //   method: "POST",
+    //   headers: {
+    //     "Content-Type": "application/json",
+    //   },
+    //   body: {
+    //     user: token,
+    //     comment: inputs.comment,
+    //   }
+    // })
+    const response = await fetch(`https://extract-backend.vercel.app/api/questions/addcomment` , {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -33,6 +43,7 @@ export default function Question({ question }) {
         comment: inputs.comment,
       }
     })
+    
     router.reload();
     return;
   }

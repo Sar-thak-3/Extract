@@ -48,7 +48,14 @@ export default function Signup(){
       return;
     }
 
-    const response = await fetch(`http://localhost:8080/api/auth/newuser` , {
+    // const response = await fetch(`http://localhost:8080/api/auth/newuser` , {
+    //   method: "POST",
+    //   headers: {
+    //     "Content-Type": "application/json",
+    //   },
+    //   body: JSON.stringify({firstname: credentials.firstName , lastname: credentials.lastName, email: credentials.email , password: credentials.password}),
+    // });
+    const response = await fetch(`https://extract-backend.vercel.app/api/auth/newuser` , {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

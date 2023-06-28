@@ -23,7 +23,15 @@ export default function AddQuestion(){
 
       if(question.questionTitle.length > 5){
         const token = localStorage.getItem("usertoken") || sessionStorage.getItem("usertoken");
-        const response = await fetch(`http://localhost:8080/api/questions/newquestion` , {
+        // const response = await fetch(`http://localhost:8080/api/questions/newquestion` , {
+        //   method: "POST",
+        //   headers: {
+        //     "Content-Type": "application/json",
+        //     "authtoken": token,
+        //   },
+        //   body: JSON.stringify({questiontitle: question.questionTitle,questiontags: value,questiondescription: question.questionDescription}),
+        // })
+        const response = await fetch(`https://extract-backend.vercel.app/api/questions/newquestion` , {
           method: "POST",
           headers: {
             "Content-Type": "application/json",

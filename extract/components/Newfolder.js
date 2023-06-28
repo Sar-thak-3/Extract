@@ -39,7 +39,15 @@ export default function Newfolder(){
 		if(foldername.foldername && foldername.foldername.length>3){
 			const token = localStorage.getItem("usertoken") || sessionStorage.getItem("usertoken");
 			let publ = (bgColor==="green") ? true:false;
-			const response = await fetch("http://127.0.0.1:8080/api/folders/newfolder" , {
+			// const response = await fetch("http://127.0.0.1:8080/api/folders/newfolder" , {
+			// 	method: "POST",
+			// 	headers: {
+			// 		"Content-Type": "application/json",
+			// 		"authtoken": token,
+			// 	},
+			// 	body: JSON.stringify({foldername: foldername.foldername,public: publ})
+			// })
+			const response = await fetch("https://extract-backend.vercel.app/api/folders/newfolder" , {
 				method: "POST",
 				headers: {
 					"Content-Type": "application/json",
@@ -49,6 +57,7 @@ export default function Newfolder(){
 			})
 
 			const res = await response.json();
+			console.log(res);
 			if(res.success){
 				router.push("/Dashboard");
 				return;

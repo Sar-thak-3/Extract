@@ -44,7 +44,15 @@ export default function About(){
       }
 
       const token = localStorage.getItem("usertoken") || sessionStorage.getItem("usertoken")
-      const response = await fetch("http://localhost:8080/api/auth/updateuser" , {
+      // const response = await fetch("http://localhost:8080/api/auth/updateuser" , {
+      //   method: "POST",
+      //   headers: {
+      //     "Content-Type": "application/json",
+      //     "authtoken": token,
+      //   },
+      //   body: JSON.stringify(values),
+      // });
+      const response = await fetch("https://extract-backend.vercel.app/api/auth/updateuser" , {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

@@ -96,7 +96,8 @@ export async function getServerSideProps(context){
   let questionData = null;
   if(required && pagenumber){
     try{
-      const response = await fetch(`http://127.0.0.1:8080/api/questions/allquestions?pagenumber=${pagenumber}&required=${required}`);
+      // const response = await fetch(`http://127.0.0.1:8080/api/questions/allquestions?pagenumber=${pagenumber}&required=${required}`);
+      const response = await fetch(`https://extract-backend.vercel.app/api/questions/allquestions?pagenumber=${pagenumber}&required=${required}`);
       questionData = await response.json(); 
     }
     catch(error){
@@ -105,7 +106,8 @@ export async function getServerSideProps(context){
   }
   else if(required && !pagenumber){
     try{
-      const response = await fetch(`http://127.0.0.1:8080/api/questions/allquestions?pagenumber=${1}&required=${required}`);
+      // const response = await fetch(`http://127.0.0.1:8080/api/questions/allquestions?pagenumber=${1}&required=${required}`);
+      const response = await fetch(`https://extract-backend.vercel.app/api/questions/allquestions?pagenumber=${1}&required=${required}`);
     questionData = await response.json();
     }
     catch(error){
@@ -114,7 +116,8 @@ export async function getServerSideProps(context){
   }
   else if(!required && pagenumber){
     try{
-      const response = await fetch(`http://127.0.0.1:8080/api/questions/allquestions?pagenumber=${pagenumber}`);
+      // const response = await fetch(`http://127.0.0.1:8080/api/questions/allquestions?pagenumber=${pagenumber}`);
+      const response = await fetch(`https://extract-backend.vercel.app/api/questions/allquestions?pagenumber=${pagenumber}`);
       questionData = await response.json();
     }
     catch(error){
@@ -123,7 +126,8 @@ export async function getServerSideProps(context){
   }
   else{
     try{
-      const response = await fetch(`http://127.0.0.1:8080/api/questions/allquestions?pagenumber=${1}`);
+      // const response = await fetch(`http://127.0.0.1:8080/api/questions/allquestions?pagenumber=${1}`);
+      const response = await fetch(`https://extract-backend.vercel.app/api/questions/allquestions?pagenumber=${1}`);
       questionData = await response.json();
     }
     catch(error){
@@ -137,7 +141,14 @@ export async function getServerSideProps(context){
 
   if(query.searchquery){
     try{
-      const response = await fetch(`http://127.0.0.1:8080/api/search/allsearchquery` , {
+      // const response = await fetch(`http://127.0.0.1:8080/api/search/allsearchquery` , {
+      //   method: "POST",
+      //   headers: {
+      //     "Content-Type": "application/json",
+      //   },
+      //   body: JSON.stringify({searchquery: query.searchquery}),
+      // });
+      const response = await fetch(`https://extract-backend.vercel.app/api/search/allsearchquery` , {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -153,7 +164,8 @@ export async function getServerSideProps(context){
   else{
     if(pagenumber){
       try{
-        const response = await fetch(`http://127.0.0.1:8080/api/folders/allanswers`);
+        // const response = await fetch(`http://127.0.0.1:8080/api/folders/allanswers`);
+        const response = await fetch(`https://extract-backend.vercel.app/api/folders/allanswers`);
         answersData = await response.json();
       }
       catch(error){
@@ -162,7 +174,8 @@ export async function getServerSideProps(context){
     }
     else{
       try{
-        const response = await fetch(`http://127.0.0.1:8080/api/folders/allanswers?pagenumber=${1}`);
+        // const response = await fetch(`http://127.0.0.1:8080/api/folders/allanswers?pagenumber=${1}`);
+        const response = await fetch(`https://extract-backend.vercel.app/api/folders/allanswers?pagenumber=${1}`);
         answersData = await response.json();
       }
       catch(error){

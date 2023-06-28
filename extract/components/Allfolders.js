@@ -20,7 +20,14 @@ export default function Allfolders(){
 
         async function fetchdata(){
             const token = localStorage.getItem("usertoken") || sessionStorage.getItem("usertoken");
-            const response = await fetch("http://127.0.0.1:8080/api/folders/userfolders", {
+            // const response = await fetch("http://127.0.0.1:8080/api/folders/userfolders", {
+            //     mathod: "GET",
+            //     headers: {
+            //         "Content-Type": "json",
+            //         "authtoken": token,
+            //     }
+            // })
+            const response = await fetch("https://extract-backend.vercel.app/api/folders/userfolders", {
                 mathod: "GET",
                 headers: {
                     "Content-Type": "json",

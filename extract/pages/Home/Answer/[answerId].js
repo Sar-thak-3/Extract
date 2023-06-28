@@ -12,7 +12,16 @@ export async function getServerSideProps(context){
 
     let answer = null;
     try{
-        const response = await fetch(`http://127.0.0.1:8080/api/folders/answer`, {
+        // const response = await fetch(`http://127.0.0.1:8080/api/folders/answer`, {
+        //     method: "post",
+        //     headers: {
+        //         "Content-Type": "application/json",
+        //     },
+        //     body: JSON.stringify({
+        //         answerId: answerId,
+        //     }),
+        // })
+        const response = await fetch(`https://extract-backend.vercel.app/api/folders/answer`, {
             method: "post",
             headers: {
                 "Content-Type": "application/json",

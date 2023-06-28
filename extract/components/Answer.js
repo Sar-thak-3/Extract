@@ -1,10 +1,10 @@
 import Image from "next/image";
 
 export default function Answer({answer}) {
-  console.log(answer.answer)
+  // console.log(answer.answer)
   return (
     <div>
-    {answer.answer && <div>
+    {answer && answer.answer && <div>
       <div className="p-2 lg:p-0 max-w-screen flex w-full sm:max-w-[854px]" style={{marginLeft: "auto",marginRight: "auto"}}>
         <div className="card dark:text-white font-arial text-base text-left overflow-auto font-bold flex flex-col w-full lg:mb-2 overflow-y-hidden transition-all duration-500 max-h-full">
           <div className="flex items-center justify-between">

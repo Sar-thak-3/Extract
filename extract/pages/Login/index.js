@@ -36,7 +36,14 @@ export default function Login(){
       return;
     }
 
-    const response = await fetch(`http://localhost:8080/api/auth/loginuser` , {
+    // const response = await fetch(`http://localhost:8080/api/auth/loginuser` , {
+    //   method: "POST",
+    //   headers: {
+    //     "Content-Type": "application/json",
+    //   },
+    //   body: JSON.stringify({email: credentials.email , password: credentials.password}),
+    // });
+    const response = await fetch(`https://extract-backend.vercel.app/api/auth/loginuser` , {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

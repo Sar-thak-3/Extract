@@ -16,7 +16,15 @@ export default function Folder({details}){
   const handleChange = async()=>{
     if(bgColor==="red"){
       const token = localStorage.getItem("usertoken") || sessionStorage.getItem("usertoken");
-      const response = await fetch("http://localhost:8080/api/folders/changepublic" , {
+      // const response = await fetch("http://localhost:8080/api/folders/changepublic" , {
+      //   method: "POST",
+      //   headers: {
+      //     "Content-Type": "json",
+      //     "authtoken": token,
+      //     "foldertoken": details.foldertoken,
+      //   }
+      // });
+      const response = await fetch("https://extract-backend.vercel.app/api/folders/changepublic" , {
         method: "POST",
         headers: {
           "Content-Type": "json",
@@ -33,7 +41,15 @@ export default function Folder({details}){
     }
     else if(bgColor==="green"){
       const token = localStorage.getItem("usertoken") || sessionStorage.getItem("usertoken");
-      const response = await fetch("http://localhost:8080/api/folders/changepublic" , {
+      // const response = await fetch("http://localhost:8080/api/folders/changepublic" , {
+      //   method: "POST",
+      //   headers: {
+      //     "Content-Type": "json",
+      //     "authtoken": token,
+      //     "foldertoken": details.foldertoken,
+      //   }
+      // });
+      const response = await fetch("https://extract-backend.vercel.app/api/folders/changepublic" , {
         method: "POST",
         headers: {
           "Content-Type": "json",
