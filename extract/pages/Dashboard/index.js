@@ -25,7 +25,8 @@ export default function Dashboard(){
       //   "authtoken": token,
       // }
       // });
-      const response = await fetch("https://extract-backend.vercel.app/api/auth/getuser", {
+      try{
+        const response = await fetch("https://extract-backend.vercel.app/api/auth/getuser", {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -38,6 +39,11 @@ export default function Dashboard(){
         setDetails(res);
       }
       else{
+        router.push("/Login");
+      }
+      }
+      catch(error){
+        console.log("Server not connected");
         router.push("/Login");
       }
     }

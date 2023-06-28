@@ -6,14 +6,14 @@ const {body,validationResult} = require("express-validator");
 const User = require("../models/Users");
 const fetchuser = require("../middleware/fetchuser");
 
-router.post("/newuser",[
-    body("password","Enter valid password").isLength({min: 6}),
-],async(req,res)=>{
-    const errors = validationResult(req);
+router.post("/newuser",async(req,res)=>{
+    // const errors = validationResult(req);
 
-    if(!errors.isEmpty()){
-        return res.status(400).json({success: false, error: "Invalid credentials"});
-    }
+    // if(!errors.isEmpty()){
+    //     console.log(errors);
+    //     console.log(req.body);
+    //     return res.status(400).json({success: false, error: "Invalid credentials"});
+    // }
 
     try{
         let user = await User.findOne({email: req.body.email});
@@ -47,16 +47,13 @@ router.post("/newuser",[
     }
 });
 
-router.post("/loginuser",[
-    body("password","Enter valid credentials").exists().isLength({min: 6}),
-],async(req,res)=>{
-    const errors = validationResult(req);
-    if(!errors.isEmpty()){
-        return res.status(400).json({success: false,error: "Invalid credentials"});
-    }
+router.post("/loginuser",async(req,res)=>{
+    // const errors = validationResult(req);
+    // if(!errors.isEmpty()){
+    //     return res.status(400).json({success: false,error: "Invalid credentials"});
+    // }
 
     const {email,password} = req.body;
-    
     try{
         console.log("run")
         let user = await User.findOne({email: email});
