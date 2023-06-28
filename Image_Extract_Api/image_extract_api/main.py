@@ -3,7 +3,10 @@ from doctr.models import ocr_predictor
 import os
 import db
 from bson.objectid import ObjectId
-import uvicorn
+# import uvicorn
+from flask import Flask
+
+app = Flask(__name__)
 
 os.environ['USE_TORCH'] = '1'
 
@@ -26,10 +29,10 @@ def readImage(imagefile):
 def findQues(paragraph):
   pass
 
-from fastapi import FastAPI
-app = FastAPI()
-@app.get("/")
-def read_root():
+# from fastapi import FastAPI
+# app = FastAPI()
+@app.route("/")
+def main():
 
   skip = 0
   while(True):
@@ -53,5 +56,7 @@ def read_root():
   para = readImage("")
   return para
 
-if __name__=='__main__':
-  uvicorn.run("main:app", port=8080, reload=True, access_log=False)
+# if __name__=='__main__':
+#   uvicorn.run("main:app", port=8080, reload=True, access_log=False)
+# if __name__=='__main__':
+#   app.run()
