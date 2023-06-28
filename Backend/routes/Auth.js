@@ -24,7 +24,6 @@ router.post("/newuser",[
 
         const salt = await bcrypt.genSalt(17);
         securePassword = await bcrypt.hash(req.body.password,salt);
-        console.log(req.body);
 
         const fullname = req.body.firstname+" "+req.body.lastname;
 

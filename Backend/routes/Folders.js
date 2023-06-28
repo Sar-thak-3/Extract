@@ -12,6 +12,7 @@ router.post("/newfolder",fetchuser,async(req,res)=>{
 
     try{
         const {foldername,public} = req.body;
+        console.log(foldername);
         const folder = await Folders.create({
             user: req.user,
             foldername: foldername,
@@ -23,6 +24,7 @@ router.post("/newfolder",fetchuser,async(req,res)=>{
         }
 
         const foldertoken = jwt.sign(data,process.env.FOLDER_JWT_SECRET);
+        console.log(foldertoken);
 
         res.status(200).json({success: true,foldertoken: foldertoken,message: "Folder successfully created"})
     }
@@ -34,6 +36,7 @@ router.post("/newfolder",fetchuser,async(req,res)=>{
 
 router.get("/userfolderimages",fetchuser,fetchfolder,async(req,res)=>{
     if(!req.user || !req.folderid){
+        console.log(req.folderid);
         res.status(400).json({success: false, error: "Invalid User of folder"});
     }
     try{

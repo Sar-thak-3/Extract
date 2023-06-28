@@ -4,6 +4,7 @@ import About from "@/components/About"
 import Activity from "@/components/Activity"
 import { useRouter } from "next/router"
 import { useEffect } from "react"
+import Image from "next/image"
 
 export default function Dashboard(){
 
@@ -18,7 +19,7 @@ export default function Dashboard(){
     async function fetchData(){
       const token = localStorage.getItem("usertoken") || sessionStorage.getItem("usertoken");
       const response = await fetch("http://127.0.0.1:8080/api/auth/getuser", {
-      method: "get",
+      method: "GET",
       headers: {
         "Content-Type": "application/json",
         "authtoken": token,
@@ -111,9 +112,9 @@ export default function Dashboard(){
             <div id="carouselExampleControls container" className="carousel text-center carousel-dark" data-mdb-ride="carousel" style={{maxWidth: "60%",marginLeft: "auto",marginRight: "auto"}}>
               <div className="carousel-inner mb-4">
                 <div className="carousel-item active">
-                  <img className="rounded-circle shadow-1-strong"
-                    src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(10).webp" alt="avatar"
-                    style={{width: "120px",transform: "translateY(10px)"}} />
+                  <Image className="rounded-circle shadow-1-strong"
+                    src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(10).webp" width={120} height={120} alt="avatar"
+                    style={{transform: "translateY(10px)"}} />
                   <div className="row d-flex justify-content-center">
                     <div className="col-lg-8">
                       <h2 style={{fontSize: "30px"}} className="mb-4">{details.fullname}</h2>

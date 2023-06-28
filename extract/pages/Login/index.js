@@ -227,11 +227,11 @@ export default function Login(){
 
                         {/* <!-- Register link --> */}
                         <p className="mb-0 mt-2 pt-1 text-sm font-semibold">
-                          Don't have an account?
+                          Don&apos;t have an account? 
                           <Link
                             href="/Signup"
                             className="text-danger transition duration-150 ease-in-out hover:text-danger-600 focus:text-danger-600 active:text-danger-700"
-                            >Register</Link
+                            > Register</Link
                           >
                         </p>
                       </div>

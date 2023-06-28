@@ -75,8 +75,8 @@ export default function Navbar(){
                 {searchdrop.length>0 && <ul className="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdown-button">
                   {searchdrop.map((ele)=>{
                     return (
-                      <li>
-                      <Link href={`/Home/Answer/${ele.id}`} key={ele.id} type="button" className="inline-flex w-full px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">{ele.text.split(" ").slice(0,10).join(" ")}</Link>
+                      <li key={ele.id}>
+                      <Link href={`/Home/Answer/${ele.id}`} type="button" className="inline-flex w-full px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">{ele.text.split(" ").slice(0,10).join(" ")}</Link>
                     </li>
                     )
                   })}

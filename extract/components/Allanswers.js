@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 
 export default function Allanswers({answers}) {
   return (
@@ -21,7 +22,7 @@ export default function Allanswers({answers}) {
                   bulk of the card's content.
                 </p> */}
               </div>
-              <img
+              <Image height={500} width={600}
                 src="https://tecdn.b-cdn.net/img/new/standard/nature/184.jpg"
                 className="rounded-t-lg"
                 alt="..."

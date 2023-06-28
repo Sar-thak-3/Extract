@@ -32,7 +32,7 @@ export default function Newfolder(){
 	}
 
 	const handleAddfolder = async()=>{
-		if(!localStorage.getItem("usertoken") || sessionStorage.getItem("usertoken")){
+		if(!localStorage.getItem("usertoken") || !sessionStorage.getItem("usertoken")){
 			router.push("/");
 			return;
 		}

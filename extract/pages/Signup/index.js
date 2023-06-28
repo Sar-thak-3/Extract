@@ -2,8 +2,9 @@ import Image from "next/image"
 import Logo2 from "../../public/Logo2.png"
 import { useState } from "react";
 import { useRouter } from "next/router";
+import Link from "next/link";
 
-export default function(){
+export default function Signup(){
 
   const router = useRouter();
 
@@ -276,10 +277,10 @@ export default function(){
                       {/* <!-- Register link --> */}
                       <p className="mb-0 mt-2 pt-1 text-sm font-semibold">
                         Already have an account?
-                        <a
+                        <Link
                           href="/Login"
                           className="text-danger transition duration-150 ease-in-out hover:text-danger-600 focus:text-danger-600 active:text-danger-700"
-                          >Login</a
+                          >Login</Link
                         >
                       </p>
                     </div>

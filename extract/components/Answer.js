@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 export default function Answer({answer}) {
   console.log(answer.answer)
   return (
@@ -40,7 +42,7 @@ export default function Answer({answer}) {
           </h1>
         </div>
       </div>
-      <img
+      <Image width={800} height={800}
         style={{marginLeft: "auto",marginRight: "auto"}}
         src="https://tecdn.b-cdn.net/img/new/slides/041.jpg"
         className="h-auto max-w-3xl mb-4"
