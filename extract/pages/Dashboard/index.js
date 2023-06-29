@@ -17,6 +17,7 @@ export default function Dashboard(){
       return;
     }
     async function fetchData(){
+      try{
       const token = localStorage.getItem("usertoken") || sessionStorage.getItem("usertoken");
       // const response = await fetch("http://127.0.0.1:8080/api/auth/getuser", {
       // method: "GET",
@@ -25,7 +26,6 @@ export default function Dashboard(){
       //   "authtoken": token,
       // }
       // });
-      try{
         const response = await fetch("https://extract-backend.vercel.app/api/auth/getuser", {
       method: "GET",
       headers: {

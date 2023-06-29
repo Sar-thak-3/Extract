@@ -5,6 +5,9 @@ const jsonwebtoken = require("jsonwebtoken");
 const {body,validationResult} = require("express-validator");
 const User = require("../models/Users");
 const fetchuser = require("../middleware/fetchuser");
+const cors = require("cors");
+
+router.use(cors());
 
 router.post("/newuser",async(req,res)=>{
     // const errors = validationResult(req);

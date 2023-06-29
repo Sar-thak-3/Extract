@@ -1,20 +1,23 @@
 import { useEffect, useState } from "react"
 import { useRouter } from "next/router";
 import Image from "next/image";
+import { useEffectX } from "use-effect-x";
 
 export default function Folder(){
 
+    const router = useRouter();
     const [images,setImages] = useState([{image: null,_id: null}]);
 
-    const router = useRouter();
+    const [loading,setLoading] = useState(true);
+    const [loadOnce,setLoadOnce] = useState(null);
 
     useEffect(()=>{
-        if(!localStorage.getItem("usertoken") || !sessionStorage.getItem("usertoken")){
+        if(!localStorage.getItem("usertoken") && !sessionStorage.getItem("usertoken")){
             router.push("/Dashboard");
+            return;
         }
-        async function fetchdata(){
+        const fetchdata = async()=>{
             const foldertoken = router.query.token;
-            console.log(foldertoken);
             if(foldertoken){
                 const token = localStorage.getItem("usertoken") || sessionStorage.getItem("usertoken");
                 // const response = await fetch("http://127.0.0.1:8080/api/folders/userfolderimages" , {
@@ -34,8 +37,11 @@ export default function Folder(){
                     },
                 })
                 const res = await response.json();
+                console.log(res);
                 if(res.success){
+                    setLoading(false);
                     setImages(res.images);
+                    setLoadOnce(true);
                 }
                 else{
                     router.push("/Dashboard");
@@ -44,7 +50,7 @@ export default function Folder(){
         }
 
         fetchdata();
-    },[])
+    },[images,images.length,loadOnce])
 
     const [previewSrc,setpreviewSrc] = useState({imagePreview: null})
 
@@ -57,6 +63,37 @@ export default function Folder(){
             }
             reader.readAsDataURL(file);
         }
+    }
+
+    const handleAddImage = async()=>{
+        if(previewSrc.imagePreview){
+            const authtoken = localStorage.getItem("usertoken") || sessionStorage.getItem("usertoken");
+            // console.log()
+            // const response = await fetch(`http://127.0.0.1:8080/api/folders/addimage` , {
+            //     method: "POST",
+            //     headers: {
+            //         "Content-Type": "application/json",
+            //         "authtoken": authtoken,
+            //         "foldertoken": router.query.token,
+            //     },
+            //     body: JSON.stringify({image: previewSrc.imagePreview})
+            // })
+            const response = await fetch(`https://extract-backend.vercel.app/api/folders/addimage` , {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    "authtoken": authtoken,
+                    "foldertoken": router.query.token,
+                },
+                body: JSON.stringify({image: previewSrc.imagePreview})
+            })
+            const res = await response.json();
+            // console.log(res);
+            if(res.success){
+                router.reload();
+            }
+        }
+        return;
     }
 
     return (
@@ -76,7 +113,7 @@ export default function Folder(){
                 <button 
                     type="button"
                     data-te-ripple-init
-                    data-te-ripple-color="light"
+                    data-te-ripple-color="light" onClick={handleAddImage}
                     className="inline-block rounded bg-primary px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-white shadow-[0_4px_9px_-4px_#3b71ca] transition duration-150 ease-in-out hover:bg-primary-600 hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:bg-primary-600 focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:outline-none focus:ring-0 active:bg-primary-700 active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] dark:shadow-[0_4px_9px_-4px_rgba(59,113,202,0.5)] dark:hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)]">
                     Add
                 </button>
@@ -89,7 +126,9 @@ export default function Folder(){
             <hr className="my-12 h-0.5 border-t-0 bg-neutral-200 opacity-100 dark:opacity-50" />
             {/* </div> */}
 
-            <div className="container mx-auto px-5 py-4 lg:px-32 lg:pt-12">
+            {loading && <div className="align-center">Loading...</div>}
+
+            {!loading && <div className="container mx-auto px-5 py-4 lg:px-32 lg:pt-12">
                 <div className="-m-1 flex flex-wrap md:-m-2">
                     {images && images.map((image)=>{
                         if(image._id!==null){
@@ -99,7 +138,7 @@ export default function Folder(){
                                   <Image width={400} height={400}
                                     alt="gallery"
                                     className="block h-full w-full rounded-lg object-cover object-center"
-                                    src="https://tecdn.b-cdn.net/img/Photos/Horizontal/Nature/4-col/img%20(73).webp" />
+                                    src={image.image} />
                                 </div>
                               </div>
                                 )
@@ -110,7 +149,7 @@ export default function Folder(){
                     })
                     }
                 </div>
-            </div>
+            </div>}
         </>
     )
 }

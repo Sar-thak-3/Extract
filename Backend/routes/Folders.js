@@ -95,8 +95,9 @@ router.post("/addimage",fetchuser,fetchfolder,async(req,res)=>{
 
     try{
         // console.log(req.folderid);
-        const folder = await Folders.find({_id: req.folderid});
-        if(!folder){
+        const folder = await Folders.findOne({_id: req.folderid});
+        // console.log(folder)
+        if(!folder || req.user!==folder.user.toString()){
             res.status(400).json({success: false,error: "No such folder exists"});
         }
         const newdata = [{
@@ -105,7 +106,7 @@ router.post("/addimage",fetchuser,fetchfolder,async(req,res)=>{
         }];
         
         const update = await Folders.findByIdAndUpdate(req.folderid,{$push: {"images": newdata}},{upsert: true,new: true});
-        // console.log(update);
+        console.log(update);
 
         res.status(200).json({success: true,message: "New Image added to folder"});
     }
