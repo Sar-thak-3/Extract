@@ -1,7 +1,7 @@
 const express = require("express");
 const connectToMongo = require("./db");
 const bodyParser = require("body-parser");
-var cors = require("cors");
+const cors = require("cors");
 const path = require("path")
 
 require('dotenv').config();
