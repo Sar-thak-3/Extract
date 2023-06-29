@@ -117,3 +117,9 @@ npm install -d tailwindcss
 
 <a name="links"></a>
 # External Links
+
+// {
+//     "rewrites": [
+//       { "source": "/(.*)", "destination": "main" }
+//     ]
+//   }

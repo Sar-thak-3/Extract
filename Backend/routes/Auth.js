@@ -71,7 +71,7 @@ router.post("/loginuser",async(req,res)=>{
 
         const authtoken = jsonwebtoken.sign(data,process.env.JWT_SECRET);
 
-        res.status(201).json({success: true,authtoken: authtoken});
+        res.status(200).json({success: true,authtoken: authtoken});
     }
     catch(error){
         console.log(error);

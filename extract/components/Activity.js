@@ -114,23 +114,22 @@ export default function Activity(){
         answersData = await response.json();
       }
       else{
-        // const response = await fetch(`http://127.0.0.1:8080/api/folders/allanswers?pagenumber=${1}` , {
-        //   method: "GET",
-        //   headers: {
-        //     "Content-Type": "json",
-        //      "authtoken": token,
-        //   }
-        // });
-        const response = await fetch(`https://extract-backend.vercel.app/api/folders/allanswers?pagenumber=${1}` , {
+        const response = await fetch(`http://127.0.0.1:8080/api/folders/allanswers?pagenumber=${1}` , {
           method: "GET",
           headers: {
             "Content-Type": "json",
              "authtoken": token,
           }
         });
+        // const response = await fetch(`https://extract-backend.vercel.app/api/folders/allanswers?pagenumber=${1}` , {
+        //   method: "GET",
+        //   headers: {
+        //     "Content-Type": "json",
+        //      "authtoken": token,
+        //   }
+        // });
         answersData = await response.json();
       }
-
       setallans(answersData);
     }
 

@@ -53,12 +53,14 @@ export default function Signup(){
     //   method: "POST",
     //   headers: {
     //     "Content-Type": "application/json",
+    //      "Access-Control-Allow-Origin": "*"
     //   },
     //   body: JSON.stringify({firstname: credentials.firstName , lastname: credentials.lastName, email: credentials.email , password: credentials.password}),
     // });
       const response = await fetch(`https://extract-backend.vercel.app/api/auth/newuser` , {
         method: "POST",
         headers: {
+          "Access-Control-Allow-Origin": "*",
           "Content-Type": "application/json",
         },
         body: JSON.stringify({firstname: credentials.firstName , lastname: credentials.lastName, email: credentials.email , password: credentials.password}),

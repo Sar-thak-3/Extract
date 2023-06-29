@@ -4,6 +4,8 @@ const Folders = require("../models/Folders");
 const fetchuser = require("../middleware/fetchuser");
 const fetchfolder = require("../middleware/fetchfolder");
 const jwt = require("jsonwebtoken");
+const mongoose = require("mongoose");
+const ObjectId = mongoose.Types.ObjectId;
 
 router.post("/newfolder",fetchuser,async(req,res)=>{
     if(!req.user){
@@ -149,9 +151,9 @@ router.get("/allanswers",async(req,res)=>{
 
     try{
         // const answers = await Folders.find().sort({images: {date: 1}}).skip((query.pagenumber-1)*20).limit(20);
-        let output;
+        let output = [];
         if(req.user){
-            const ans = await Folders.aggregate([{$unwind: "$images"}]);
+            const ans = await Folders.aggregate([{$match: {"user": new ObjectId(req.user)}},{$unwind: "$images"}]);
             let answers = []
             ans.forEach((an)=>{
                 answers.push(an.images);

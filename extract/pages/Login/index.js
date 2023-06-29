@@ -40,20 +40,24 @@ export default function Login(){
     //   const response = await fetch(`http://localhost:8080/api/auth/loginuser` , {
     //   method: "POST",
     //   headers: {
+    //     'Access-Control-Allow-Origin': '*',
     //     "Content-Type": "application/json",
     //   },
+    //   // mode: "no-cors",
     //   body: JSON.stringify({email: credentials.email , password: credentials.password}),
     // });
         const response = await fetch(`https://extract-backend.vercel.app/api/auth/loginuser` , {
         method: "POST",
         headers: {
+          "Access-Control-Allow-Origin": "*",
           "Content-Type": "application/json",
         },
+        // mode: "no-cors",
         body: JSON.stringify({email: credentials.email , password: credentials.password}),
       });
 
       const res = await response.json();
-      console.log(res);
+      // console.log(res);
       if(res.success && checkbox){
         localStorage.setItem("usertoken" , res.authtoken);
         router.push("/Dashboard");

@@ -32,7 +32,7 @@ export default function Newfolder(){
 	}
 
 	const handleAddfolder = async()=>{
-		if(!localStorage.getItem("usertoken") || !sessionStorage.getItem("usertoken")){
+		if(!localStorage.getItem("usertoken") && !sessionStorage.getItem("usertoken")){
 			router.push("/");
 			return;
 		}
@@ -51,6 +51,7 @@ export default function Newfolder(){
 				method: "POST",
 				headers: {
 					"Content-Type": "application/json",
+					"Access-Control-Allow-Origin": "*",
 					"authtoken": token,
 				},
 				body: JSON.stringify({foldername: foldername.foldername,public: publ})
