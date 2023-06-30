@@ -2,6 +2,14 @@ import Link from "next/link";
 import Image from "next/image";
 
 export default function Allanswers({answers}) {
+
+  const checkImage = async(path) =>{
+    if(<Image src={path}></Image>){
+      return true;
+    }
+    return false;
+  };
+
   return (
     <>
     {answers && answers.answers && answers.answers.map((answer)=>{
@@ -22,8 +30,9 @@ export default function Allanswers({answers}) {
                   bulk of the card's content.
                 </p> */}
               </div>
+              {}
               <Image height={500} width={600}
-                src="https://tecdn.b-cdn.net/img/new/standard/nature/184.jpg"
+                src={checkImage(answer.image) ? answer.image: ""}
                 className="rounded-t-lg"
                 alt="..."
               />

@@ -3,6 +3,7 @@ import Image from "next/image"
 import Logo2 from "../../public/Logo2.png"
 import { useState } from "react"
 import { useRouter } from "next/router"
+import axios from "axios";
 
 export default function Login(){
 
@@ -36,6 +37,46 @@ export default function Login(){
       return;
     }
     
+    // axios({
+    //   method:"POST",
+    //   url: `http://127.0.0.1:8080/api/auth/loginuser` ,
+    //   headers: {
+    //     "Content-Type":"application/octet-stream",
+    //     'Access-Control-Allow-Origin': true
+    //   },
+    //   body: JSON.stringify({email: credentials.email,password: credentials.password}),
+    //   data:{
+    //     "email": credentials.email,
+    //     "password": credentials.password,
+    //   }
+    // })
+    //   .then((response)=>{
+    //     console.log(response);
+    //     return response.json();
+    //   })
+    //   .then((res)=>{
+    //     if(res.success && checkbox){
+    //       localStorage.setItem("usertoken" , res.authtoken);
+    //       router.push("/Dashboard");
+    //       return;
+    //     }
+    //     else if(res.success){
+    //       sessionStorage.setItem("usertoken",res.authtoken);
+    //       router.push("/Dashboard");
+    //       return;
+    //     }
+    //     else{
+    //       setInvalidVisible("visible");
+    //       setTimeout(()=>{
+    //         setInvalidVisible("hidden");
+    //       },3000);
+    //     }
+    //   })
+    //   .catch((error)=>{
+    //     console.log(error)
+    //     console.log("Server not connected");
+    //   })
+
     try{
     //   const response = await fetch(`http://127.0.0.1:8080/api/auth/loginuser` , {
     //   method: "POST",

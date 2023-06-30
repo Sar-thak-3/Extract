@@ -44,7 +44,7 @@ export default function Answer({answer}) {
       </div>
       <Image width={800} height={800}
         style={{marginLeft: "auto",marginRight: "auto"}}
-        src="https://tecdn.b-cdn.net/img/new/slides/041.jpg"
+        src={answer.answer.image}
         className="h-auto max-w-3xl mb-4"
         alt="..." />
     </div>
