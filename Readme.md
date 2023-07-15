@@ -65,6 +65,12 @@ Extract
 > Why docTR is used?
 * I used docTR model because of very high accuracy as compared to any other OCR and it can very easily judges number and symbols which are essential in high studies.
 
+> What is the working of Model?
+* Firstly any user uploads their notes in their respective folders which have an option of keeping it private/public.
+* If folder is public the image uploaded in first OCR using docTR and then complete text is send to another Deep Learning model.
+* The deep learning model was created by me from scratch using LSTM, NLP, Convolutional layers, Embeddings.
+* Now the model, filters out the questions from image and store it!
+
 <br>
 
 <a name="tech_stack"></a>
@@ -113,13 +119,11 @@ npm install -d tailwindcss
 ```
 
 <a name="future_initiatives"></a>
-# Future Initiatives
+# Future Scope
+* 
 
 <a name="links"></a>
 # External Links
-
-// {
-//     "rewrites": [
-//       { "source": "/(.*)", "destination": "main" }
-//     ]
-//   }
+* <a href="extract-frontend-six.vercel.app/">Website Link</a>
+* <a href="https://extract-backend.vercel.app/">Backend Api</a>
+* <a href="">Deep Learning Model</a>
